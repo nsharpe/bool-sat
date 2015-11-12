@@ -6,10 +6,18 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
- * Created by neilsharpe on 11/10/15.
+ * This class is immutable and thread safe
+ *
+ * A clause is a collection of bits where when given a single solution if any bit matches the solution the clause is considered solved.
+ *
+ * This class provides a variety of tools for manipulation or inquries on a given clause.
+ *
+ * @author "neil sharpe"
+ * @see {@link SatisfiabilityProblem}
  */
 public class Clause {
   private final Map<Long,Boolean> clause;
@@ -61,6 +69,10 @@ public class Clause {
 
   public Integer size(){
     return clause.size();
+  }
+
+  public Set<Long> fields(){
+    return clause.keySet();
   }
 
   public static Clause of(Map<Long,Boolean> c){
